@@ -449,9 +449,9 @@ class ProfanityFilter:
         # Paths to profane word dictionaries
         self._profane_word_dictionary_files = {}
         for language in self.languages:
-            profane_word_file = self._DATA_DIR / f'{language}_profane_words.txt'
-            if profane_word_file.exists():
-                self._profane_word_dictionary_files[language] = profane_word_file
+            profane_word_file = Path(f'{self._DATA_DIR}/{language}_profane_words.txt')
+            if profane_word_file.is_file():
+                self._profane_word_dictionary_files[language] = profane_word_file.__str__()
         if not self._profane_word_dictionary_files:
             raise ProfanityFilterError(f"Couldn't load profane words for any of languages: {self.languages_str}")
 
