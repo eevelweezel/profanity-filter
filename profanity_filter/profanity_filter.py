@@ -395,8 +395,8 @@ class ProfanityFilter:
                 self._spells = {}
                 for language in self._languages:
                     with suppress(HunSpellError):
-                        self._spells[language] = HunSpell(self._DATA_DIR / f'{language}.dic',
-                                                          self._DATA_DIR / f'{language}.aff')
+                        self._spells[language] = HunSpell(f'{self._DATA_DIR}/{language}.dic',
+                                                          f'{self._DATA_DIR}/{language}.aff')
                 if not self._spells:
                     self.analyses -= {AnalysisType.DEEP}
 
